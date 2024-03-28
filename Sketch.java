@@ -54,19 +54,17 @@ public class Sketch extends PApplet {
     rect(600, 0, 300, 300);
     rect(900, 0, 300, 300);
   }
+
   
-  /**
-   * Draws the bottom left section
-   */
+  // Quadrant 1: create white squares covering the entire box
   public void draw_section1() {
     int intX = 0;
     int intY = 0;
 
     for (int intRow = 0; intRow < 30; intRow++) {
       for (int intColumn = 0; intColumn < 30; intColumn++) {
-        intX = 3 + 0;  // Instead of zero, calculate the proper intX location using 'intRow'
-        intY = 300 + 3 + 0; // Instead of zero, calculate the proper intY location using 'intColumn'
-
+        intX = 3 + intRow * 10;  
+        intY = 300 + 3 + intColumn * 10;  
         fill(255);
         noStroke();
         rect(intX, intY, 5, 5);
@@ -74,46 +72,167 @@ public class Sketch extends PApplet {
     }
   }
 
-  /**
-   * Use the modulus operator and an if statement to select the color
-   * Don't loop from 30 to 60 to shift everything over, just add 300 to x.
-   */
+  // Quadrant 2: create repeated black and white pattern vertically 
   public void draw_section2() {
+    
+    int intX = 0;
+    int intY = 0;
 
-  }
+    for (int intRow = 0; intRow < 30; intRow++) {
+      for (int intColumn = 0; intColumn < 30; intColumn++) {
+        intX = 3 + 300 + intRow * 10;    
+        intY = 300 + 3 + intColumn * 10;
 
-  /**
-   * Use the modulus operator and an if/else statement to select the color.
-   * Don't use multiple 'if' statements.
-   */
+        if(intRow % 2 == 1){
+          fill(0);
+        }
+          else {
+          fill(255);
+
+        }
+
+        noStroke();
+        rect(intX, intY, 5, 5);
+      }
+    }
+  } 
+
+  // Quadrant 3: create repeated black and  white pattern horizontally
   public void draw_section3() {
+    int intX = 0;
+    int intY = 0;
+    for (int intRow = 0; intRow < 30; intRow++) {
+      for (int intColumn = 0; intColumn < 30; intColumn++) {
+      intX = 3 + 600 + intRow * 10;
+      intY = 300 + 3 + intColumn * 10; 
 
-  }
+      if(intColumn % 2 == 0){
+        fill(0);
+      }
+      
+        else{
+        fill(255);
+      }
 
-  /**
-   * Use the modulus operator and just one 'if' statement to select the color.
-   */
+      noStroke();
+      rect(intX, intY, 5, 5);
+   
+      } 
+    } 
+  } 
+      
+
+
+  // Quadrant 4: create small black repeated borders around the white squares 
   public void draw_section4() {
+    
+    int intX = 0;
+    int intY = 0;
+    for (int intRow = 0; intRow < 30; intRow++) {
+      for (int intColumn = 0; intColumn < 30; intColumn++) {
+       intX = 3 + 900 + intRow * 10;
+       intY = 300 + 3 + intColumn * 10;
+       fill(255);
+       if(intColumn % 2 == 0 || intRow % 2 == 1){
+        fill(0);
+       } 
 
+       noStroke();
+       rect(intX, intY, 5, 5);
+      }   
+    } 
   }
+      
 
-  /**
-   * Do NOT use 'if' statements to complete 5-8. Manipulate the loops instead
-   */
+  // Quadrant 5: create a slanted triangle on the right side of the box
   public void draw_section5() {
+    int intX = 0;
+    int intY = 0;
+    int intGreater = 0; 
 
+    for (int intRow = 29; intRow >= 1; intRow--){
+      intGreater ++;
+      for (int intColumn = 29; intColumn >= intGreater; intColumn--) {
+        intX = intRow * 10 + 3;
+        intY = intColumn * 10 + 3;
+
+        fill(255);
+        noStroke();
+        rect(intX, intY, 5, 5);
+
+      }
+    }
   }
+      
 
+  // Quadrant 6: create a slanted triangle facing the opposite side to the left 
   public void draw_section6() {
+    int intX = 0;
+    int intY = 0;
+    int intGreater = -1;
 
+    for (int intRow = 0; intRow <= 29; intRow ++){
+      intGreater ++;
+      for (int intColumn = 29; intColumn >= intGreater; intColumn--){
+        intX = 303 + intRow * 10;
+        intY = 3 + intColumn * 10;
+
+        fill(255);
+        noStroke();
+        rect(intX, intY, 5, 5);
+
+      } 
+    } 
   }
 
-  public void draw_section7() {
-
-  }
+      
   
-  public void draw_section8() {
+// Quadrant 7: create a slanted triangle facing the top left corner
+  public void draw_section7() {
+    int intX = 0;
+    int intY = 0;
+    int intGreater = 30;
 
+    for (int intRow = 0; intRow <= 30; intRow ++){
+      intGreater --;
+      for (int intColumn = 0; intColumn <=intGreater; intColumn++){
+        intX = 600 + 3 + intRow * 10; 
+        intY = 3 + intColumn * 10; 
+
+        fill(255);
+        noStroke();
+        rect(intX, intY, 5, 5); 
+
+      } 
+    } 
   }
+      
+  
+  
+// Quadrant 8: create a slanted triangle facing the top right corner
+  public void draw_section8() {
+    int intX = 0;
+    int intY = 0;
+    int intGreater = 31;
+
+    for (int intRow = 30; intRow >= 0; intRow --){
+      intGreater --;
+      for (int intColumn =0; intColumn<=intGreater; intColumn++){
+        intX = 900 + 3 + intRow * 10;
+        intY = 3 + intColumn * 10; 
+
+        fill(255);
+        noStroke();
+        rect(intX, intY, 5,5);
+    
+      } 
+    } 
+  } 
+      
+
+
+
+
+  
 
 }
